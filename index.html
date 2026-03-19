@@ -257,10 +257,10 @@
 
     <!-- STATS BAR -->
     <div class="stats-bar reveal">
-        <div class="stat-item"><div class="stat-number">25+</div><div class="stat-label">Jahre Erfahrung</div></div>
-        <div class="stat-item"><div class="stat-number">4.9</div><div class="stat-label">Google Bewertung</div></div>
-        <div class="stat-item"><div class="stat-number">500+</div><div class="stat-label">Zufriedene Kunden</div></div>
-        <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">Individuelle Planung</div></div>
+        <div class="stat-item"><div class="stat-number" data-count="25" data-suffix="+">0</div><div class="stat-label">Jahre Erfahrung</div></div>
+        <div class="stat-item"><div class="stat-number" data-count="4.9" data-decimals="1">0</div><div class="stat-label">Google Bewertung</div></div>
+        <div class="stat-item"><div class="stat-number" data-count="500" data-suffix="+">0</div><div class="stat-label">Zufriedene Kunden</div></div>
+        <div class="stat-item"><div class="stat-number" data-count="100" data-suffix="%">0</div><div class="stat-label">Individuelle Planung</div></div>
     </div>
 
     <!-- LEISTUNGEN -->
@@ -570,8 +570,42 @@
         function closeModal(id) { document.getElementById(id).classList.remove('active'); document.body.style.overflow = ''; }
         document.querySelectorAll('.modal-overlay').forEach(m => { m.addEventListener('click', (e) => { if(e.target === m) closeModal(m.id); }); });
 
+        // Number Counter Animation
+        const statElements = document.querySelectorAll('.stat-number');
+        let counterStarted = false;
+        const startCounters = () => {
+            if (counterStarted) return;
+            counterStarted = true;
+            statElements.forEach(el => {
+                const target = parseFloat(el.getAttribute('data-count'));
+                const suffix = el.getAttribute('data-suffix') || '';
+                const decimals = el.getAttribute('data-decimals') ? parseInt(el.getAttribute('data-decimals')) : 0;
+                const duration = 2000;
+                const steps = 60;
+                const stepTime = Math.abs(Math.floor(duration / steps));
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += target / steps;
+                    if (current >= target) {
+                        el.textContent = target.toFixed(decimals) + suffix;
+                        clearInterval(timer);
+                    } else {
+                        el.textContent = current.toFixed(decimals) + suffix;
+                    }
+                }, stepTime);
+            });
+        };
+
         // Scroll reveal
-        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }); }, { threshold: 0.1 });
+        const observer = new IntersectionObserver((entries) => { 
+            entries.forEach(entry => { 
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active'); 
+                    if (entry.target.classList.contains('stats-bar')) startCounters();
+                }
+            }); 
+        }, { threshold: 0.1 });
         document.querySelectorAll('.reveal, .section-divider').forEach(el => observer.observe(el));
     </script>
 </body>
