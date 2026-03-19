@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gartenbau Stolzlederer | Qualität, tief verwurzelt</title>
+    <meta name="description" content="Individuelle Gartengestaltung, Gartenplanung und Gärtnerei von Stolzlederer in Oberösterreich. 25 Jahre Erfahrung – Zeit für Natur zuhause.">
+    <meta property="og:title" content="Gartenbau Stolzlederer | Qualität, tief verwurzelt">
+    <meta property="og:description" content="Individuelle Gartengestaltung, Gartenplanung und Gärtnerei in Neumarkt im Mühlkreis. Ihr Partner für Traumgärten seit über 25 Jahren.">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --bg-warm: #faf8f5;
+            --bg-cream: #efe8e1;
+            --bg-green-soft: rgba(185, 201, 103, 0.08);
+            --primary: #7a8c2a;
+            --primary-light: #8fa033;
+            --primary-glow: rgba(185, 201, 103, 0.2);
+            --accent: #5a7a28;
+            --accent-light: #6b8e34;
+            --accent-glow: rgba(90, 122, 40, 0.2);
+            --heading: #1a1a1a;
+            --text: #2c2c2c;
+            --text-muted: #6b6b6b;
+            --card-bg: #ffffff;
+            --border: rgba(122, 140, 42, 0.12);
+            --border-hover: rgba(122, 140, 42, 0.3);
+            --shadow: 0 8px 30px rgba(0,0,0,0.08);
+            --shadow-hover: 0 16px 50px rgba(0,0,0,0.12);
+            --serif: 'Playfair Display', serif;
+            --sans: 'Lato', sans-serif;
+            --radius: 16px;
+            --radius-btn: 50px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg-warm); color: var(--text); font-family: var(--sans); line-height: 1.7; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        a:focus-visible, button:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
+        @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } html { scroll-behavior: auto; } }
+
+        /* HEADER */
+        header { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 1100px; z-index: 1000; background: rgba(255,255,255,0.85); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid var(--border); border-radius: 100px; padding: 12px 40px; display: flex; justify-content: space-between; align-items: center; transition: background 0.3s, box-shadow 0.3s; }
+        header.scrolled { background: rgba(255,255,255,0.95); box-shadow: var(--shadow); }
+        .logo { font-family: var(--serif); font-size: 1.5rem; letter-spacing: 0.5px; color: var(--primary); font-weight: 700; cursor: pointer; text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .logo img { height: 45px; width: auto; }
+        .logo i { color: var(--accent); }
+        nav { display: flex; gap: 28px; align-items: center; }
+        nav a { text-decoration: none; color: var(--text); font-size: 0.8rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 700; transition: color 0.3s; cursor: pointer; padding-bottom: 4px; border-bottom: 2px solid transparent; }
+        nav a:hover, nav a.active { color: var(--primary); border-bottom-color: var(--primary); }
+        .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; z-index: 1001; }
+        .hamburger span { display: block; width: 24px; height: 2.5px; background: var(--primary); transition: 0.3s ease; border-radius: 2px; }
+        .hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+        /* HERO */
+        .hero { height: 100vh; width: 100%; position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 0 20px; overflow: hidden; color: #fff; }
+        .hero-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: url('https://www.gartenbau-stolzlederer.at/wp-content/uploads/2023/11/IMG_E4937-scaled-e1701271699691-1600x800.jpg') center/cover no-repeat; z-index: 0; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(90,122,40,0.75) 0%, rgba(122,140,42,0.6) 100%); z-index: 1; }
+        .hero::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 150px; background: linear-gradient(transparent, var(--bg-warm)); pointer-events: none; z-index: 2; }
+        .particles { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+        .particle { position: absolute; border-radius: 50%; background: radial-gradient(circle, rgba(185,201,103,0.35), transparent 70%); animation: float-particle linear infinite; }
+        @keyframes float-particle { 0% { transform: translateY(100vh) scale(0); opacity: 0; } 10% { opacity: 0.8; } 90% { opacity: 0.3; } 100% { transform: translateY(-10vh) scale(1); opacity: 0; } }
+        .scroll-indicator { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 3; display: flex; flex-direction: column; align-items: center; gap: 8px; animation: bounce-gentle 2s ease-in-out infinite; }
+        .scroll-indicator span { font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.7); }
+        .scroll-indicator .arrow { width: 18px; height: 18px; border-right: 2px solid rgba(255,255,255,0.6); border-bottom: 2px solid rgba(255,255,255,0.6); transform: rotate(45deg); }
+        @keyframes bounce-gentle { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
+        .hero h1 { font-family: var(--serif); font-size: clamp(2.5rem, 7vw, 4.5rem); font-weight: 700; margin-bottom: 15px; position: relative; z-index: 3; text-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        .hero p { font-family: var(--sans); font-weight: 300; font-size: clamp(1rem, 2vw, 1.3rem); letter-spacing: 3px; text-transform: uppercase; opacity: 0.9; margin-bottom: 40px; position: relative; z-index: 3; min-height: 1.5em; }
+        .typewriter-cursor { display: inline-block; width: 2px; height: 1.1em; background: #fff; margin-left: 4px; animation: blink-cursor 0.8s step-end infinite; vertical-align: text-bottom; }
+        @keyframes blink-cursor { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .btn-primary { background: var(--card-bg); color: var(--primary); padding: 18px 45px; border-radius: var(--radius-btn); text-decoration: none; font-weight: 700; font-size: 0.9rem; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 8px 30px rgba(0,0,0,0.15); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); border: none; cursor: pointer; position: relative; z-index: 3; }
+        .btn-primary:hover { transform: scale(1.05) translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.2); background: var(--primary); color: #fff; }
+        .btn-green { background: var(--primary); color: #fff; padding: 16px 40px; border-radius: var(--radius-btn); text-decoration: none; font-weight: 700; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; box-shadow: 0 6px 20px var(--primary-glow); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); border: none; cursor: pointer; display: inline-block; }
+        .btn-green:hover { background: var(--accent); box-shadow: 0 8px 25px var(--accent-glow); transform: translateY(-2px); color: #fff; }
+
+        /* SECTIONS */
+        .section { padding: 100px 8%; }
+        .section-cream { background-color: var(--bg-cream); }
+        .section-label { font-family: var(--sans); font-size: 0.75rem; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; display: block; font-weight: 700; }
+        .section-title { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; margin-bottom: 20px; color: var(--heading); }
+        .section-divider { width: 0; height: 4px; background: linear-gradient(90deg, var(--primary), var(--accent)); margin: 25px auto 50px; border-radius: 2px; transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s; }
+        .section-divider.active { width: 80px; }
+
+        /* STATEMENT */
+        .statement { text-align: center; background-color: var(--bg-cream); }
+        .statement h2 { font-family: var(--serif); font-size: clamp(1.6rem, 3.5vw, 2.5rem); font-weight: 400; font-style: italic; max-width: 800px; margin: 0 auto; line-height: 1.5; color: var(--heading); }
+
+        /* STATS */
+        .stats-bar { display: flex; justify-content: center; gap: 60px; flex-wrap: wrap; padding: 60px 8%; background: var(--bg-warm); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .stat-item { text-align: center; }
+        .stat-number { font-family: var(--serif); font-size: 3.2rem; font-weight: 700; color: var(--primary); line-height: 1; }
+        .stat-label { font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-top: 8px; font-weight: 700; }
+
+        /* GRID */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 35px; }
+
+        /* SERVICE CARDS */
+        .service-card { background: var(--card-bg); border: 1px solid var(--border); padding: 40px 35px; border-radius: var(--radius); box-shadow: var(--shadow); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden; }
+        .service-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; border-radius: var(--radius); background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(185,201,103,0.08), transparent 60%); opacity: 0; transition: opacity 0.4s; pointer-events: none; }
+        .service-card:hover { border-color: var(--border-hover); transform: translateY(-6px); box-shadow: var(--shadow-hover); }
+        .service-card:hover::after { opacity: 1; }
+        .service-card .card-img { width: 100%; height: 200px; object-fit: cover; border-radius: 12px; margin-bottom: 22px; transition: transform 0.5s; }
+        .service-card:hover .card-img { transform: scale(1.03); }
+        .service-card .icon-wrap { width: 54px; height: 54px; border-radius: 14px; background: var(--bg-green-soft); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; transition: transform 0.5s, background 0.3s; }
+        .service-card:hover .icon-wrap { transform: scale(1.1) rotate(-5deg); background: var(--primary-glow); }
+        .service-card .icon-wrap i { color: var(--primary); width: 24px; height: 24px; }
+        .service-card h3 { font-family: var(--serif); font-size: 1.5rem; margin-bottom: 10px; font-weight: 600; }
+        .service-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
+
+        /* GALLERY TILES */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-top: 50px; }
+        .gallery-tile { position: relative; border-radius: var(--radius); overflow: hidden; aspect-ratio: 4/3; box-shadow: var(--shadow); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); cursor: default; }
+        .gallery-tile:hover { box-shadow: var(--shadow-hover); transform: translateY(-4px); }
+        .gallery-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+        .gallery-tile:hover img { transform: scale(1.08); }
+        .gallery-tile .tile-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 18px 14px 12px; background: linear-gradient(transparent, rgba(0,0,0,0.7)); font-family: var(--serif); font-size: 1rem; color: #fff; transform: translateY(4px); opacity: 0; transition: all 0.4s; }
+        .gallery-tile:hover .tile-caption { transform: translateY(0); opacity: 1; }
+
+        /* MASONRY PORTFOLIO */
+        .masonry { column-count: 2; column-gap: 20px; }
+        .masonry-item { break-inside: avoid; margin-bottom: 20px; border-radius: var(--radius); overflow: hidden; position: relative; box-shadow: var(--shadow); transition: box-shadow 0.5s, transform 0.5s; }
+        .masonry-item:hover { box-shadow: var(--shadow-hover); transform: translateY(-4px); }
+        .masonry-item img { width: 100%; display: block; transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        .masonry-item:hover img { transform: scale(1.06); }
+        .masonry-item .overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(122,140,42,0.65); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.4s; border-radius: var(--radius); }
+        .masonry-item:hover .overlay { opacity: 1; }
+        .masonry-item .overlay span { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; color: #fff; transform: translateY(10px); opacity: 0; transition: all 0.4s 0.1s; }
+        .masonry-item:hover .overlay span { transform: translateY(0); opacity: 1; }
+
+        /* PROCESS */
+        .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0; position: relative; }
+        .process-step { text-align: center; padding: 40px 30px; position: relative; }
+        .process-step::after { content: ''; position: absolute; top: 50%; right: 0; width: 40px; height: 2px; background: var(--border); }
+        .process-step:last-child::after { display: none; }
+        .step-circle { width: 56px; height: 56px; border-radius: 50%; background: var(--primary); color: #fff; font-family: var(--serif); font-size: 1.5rem; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; box-shadow: 0 4px 15px var(--primary-glow); transition: all 0.5s; }
+        .process-step:hover .step-circle { background: var(--accent); box-shadow: 0 6px 20px var(--accent-glow); transform: scale(1.1); }
+        .process-step h4 { font-family: var(--serif); font-size: 1.3rem; font-weight: 600; margin-bottom: 8px; }
+        .process-step p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+
+        /* ABOUT CTA */
+        .about-cta { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 55px; display: flex; align-items: center; gap: 50px; max-width: 1000px; margin: 0 auto; box-shadow: var(--shadow); }
+        .about-cta .text { flex: 1; }
+        .about-cta h3 { font-family: var(--serif); font-size: 2rem; font-weight: 700; margin-bottom: 15px; }
+        .about-cta p { color: var(--text-muted); margin-bottom: 25px; line-height: 1.7; }
+        .schedule-row { display: flex; gap: 16px; margin-bottom: 25px; flex-wrap: wrap; }
+        .schedule-box { background: var(--bg-cream); border: 1px solid var(--border); border-radius: 12px; padding: 16px 20px; text-align: center; flex: 1; min-width: 140px; }
+        .schedule-box strong { display: block; font-family: var(--serif); font-size: 1.1rem; color: var(--primary); margin-bottom: 4px; }
+        .schedule-box span { font-size: 0.85rem; color: var(--text-muted); }
+
+        /* TESTIMONIALS */
+        .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        .testimonial-card { background: var(--card-bg); border: 1px solid var(--border); padding: 38px 32px; border-radius: var(--radius); position: relative; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: var(--shadow); }
+        .testimonial-card:hover { transform: translateY(-5px); border-color: var(--border-hover); box-shadow: var(--shadow-hover); }
+        .testimonial-card .quote-mark { font-family: var(--serif); font-size: 4rem; color: var(--primary); opacity: 0.15; line-height: 1; position: absolute; top: 18px; left: 28px; }
+        .testimonial-card .stars { color: var(--accent); margin-bottom: 12px; font-size: 1rem; letter-spacing: 2px; }
+        .testimonial-card blockquote { font-family: var(--serif); font-size: 1.1rem; font-style: italic; font-weight: 400; line-height: 1.7; margin-bottom: 20px; color: var(--text); }
+        .testimonial-card .author { font-family: var(--sans); font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; color: var(--primary); font-weight: 700; }
+
+        /* CONTACT CTA */
+        .contact-cta { text-align: center; background: var(--bg-cream); position: relative; }
+        .contact-cta::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, var(--primary-glow) 0%, transparent 70%); opacity: 0.3; pointer-events: none; }
+        .contact-cta h2 { font-family: var(--serif); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; margin-bottom: 18px; position: relative; color: var(--heading); }
+        .contact-cta p { color: var(--text-muted); max-width: 550px; margin: 0 auto 35px; font-size: 1.05rem; line-height: 1.7; }
+        .contact-info-row { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; margin-top: 45px; }
+        .contact-info-item { display: flex; align-items: center; gap: 10px; color: var(--text-muted); font-size: 0.95rem; }
+        .contact-info-item i { color: var(--primary); width: 18px; height: 18px; }
+
+        /* FOOTER */
+        footer { padding: 60px 8% 35px; border-top: 1px solid var(--border); background: var(--bg-warm); }
+        .footer-content { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 40px; margin-bottom: 40px; }
+        .footer-brand .logo { margin-bottom: 12px; display: flex; }
+        .footer-brand p { color: var(--text-muted); font-size: 0.9rem; max-width: 300px; line-height: 1.6; }
+        .footer-links h4 { font-family: var(--serif); font-size: 1.1rem; font-weight: 600; margin-bottom: 15px; color: var(--primary); }
+        .footer-links a { display: block; color: var(--text-muted); text-decoration: none; font-size: 0.9rem; margin-bottom: 8px; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--primary); }
+        .footer-bottom { border-top: 1px solid var(--border); padding-top: 25px; text-align: center; color: var(--text-muted); font-size: 0.8rem; letter-spacing: 1px; }
+
+        /* LEGAL SECTIONS */
+        .legal-section { max-width: 800px; margin: 0 auto; padding: 120px 8% 80px; }
+        .legal-content { line-height: 1.8; }
+        .legal-content h3 { font-family: var(--serif); font-size: 1.3rem; margin: 30px 0 10px; color: var(--primary); }
+        .legal-content p { color: var(--text-muted); margin-bottom: 15px; }
+
+        /* REVEAL */
+        .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1), transform 0.9s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0) translateX(0) scale(1) rotate(0); }
+        .reveal-left { transform: translateX(-40px); }
+        .reveal-right { transform: translateX(40px); }
+        .reveal-scale { transform: scale(0.9); }
+        .reveal-delay-1 { transition-delay: 0.12s; }
+        .reveal-delay-2 { transition-delay: 0.24s; }
+        .reveal-delay-3 { transition-delay: 0.36s; }
+        .reveal-delay-4 { transition-delay: 0.48s; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            header { padding: 10px 20px; border-radius: 50px; }
+            .hamburger { display: flex; }
+            nav { position: fixed; top: 0; right: -100%; width: 75%; max-width: 320px; height: 100vh; background: rgba(250,248,245,0.98); backdrop-filter: blur(20px); flex-direction: column; justify-content: center; align-items: center; gap: 30px; transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1); border-left: 1px solid var(--border); }
+            nav.open { right: 0; }
+            nav a { font-size: 1rem; letter-spacing: 3px; }
+            .masonry { column-count: 1; }
+            .section { padding: 70px 6%; }
+            .hero h1 { font-size: clamp(2rem, 10vw, 3.2rem); }
+            .process-step::after { display: none; }
+            .contact-info-row { flex-direction: column; align-items: center; gap: 16px; }
+            .footer-content { flex-direction: column; align-items: center; text-align: center; }
+            .stats-bar { gap: 30px; }
+            .about-cta { flex-direction: column; padding: 35px 22px; gap: 25px; text-align: center; }
+        }
+        @media (max-width: 480px) { .grid { grid-template-columns: 1fr; } .testimonials-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <header id="site-header">
+        <a href="#" class="logo"><img src="https://www.gartenbau-stolzlederer.at/wp-content/uploads/2022/04/st-logo-jubilaeum.png" alt="Stolzlederer Logo"></a>
+        <nav id="main-nav">
+            <a href="#" class="active">Home</a>
+            <a href="#leistungen">Leistungen</a>
+            <a href="#galerie">Galerie</a>
+            <a href="#about">Über uns</a>
+            <a href="#kontakt">Kontakt</a>
+        </nav>
+        <button class="hamburger" id="hamburger-btn" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="hero-section">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="particles" id="particles"></div>
+        <h1 class="reveal">Zeit für Natur zuhause.</h1>
+        <p class="reveal reveal-delay-1" id="hero-subtitle"></p>
+        <a href="#kontakt" class="btn-primary reveal reveal-delay-2">Jetzt anfragen</a>
+        <div class="scroll-indicator reveal reveal-delay-3"><span>Entdecken</span><div class="arrow"></div></div>
+    </section>
+
+    <!-- STATEMENT -->
+    <section class="section statement reveal">
+        <h2>„Die passenden Pflanzen am richtigen Standort vermitteln Schutz, Geborgenheit und Harmonie – seit über 25 Jahren gestalten wir Ihren Traumgarten."</h2>
+        <div class="section-divider"></div>
+    </section>
+
+    <!-- STATS BAR -->
+    <div class="stats-bar reveal">
+        <div class="stat-item"><div class="stat-number">25+</div><div class="stat-label">Jahre Erfahrung</div></div>
+        <div class="stat-item"><div class="stat-number">4.9</div><div class="stat-label">Google Bewertung</div></div>
+        <div class="stat-item"><div class="stat-number">500+</div><div class="stat-label">Zufriedene Kunden</div></div>
+        <div class="stat-item"><div class="stat-number">100%</div><div class="stat-label">Individuelle Planung</div></div>
+    </div>
+
+    <!-- LEISTUNGEN -->
+    <section class="section section-cream" id="leistungen">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span class="section-label reveal">Was wir bieten</span>
+            <h2 class="section-title reveal reveal-delay-1">Unsere Leistungen</h2>
+            <div class="section-divider reveal reveal-delay-2"></div>
+        </div>
+        <div class="grid">
+            <div class="service-card reveal reveal-left reveal-delay-1">
+                <img src="https://www.gartenbau-stolzlederer.at/wp-content/uploads/2023/11/IMG_E4937-scaled-e1701271699691-1600x800.jpg" alt="Gartenplanung" class="card-img">
+                <div class="icon-wrap"><i data-lucide="pencil-ruler"></i></div>
+                <h3>Gartenplanung</h3>
+                <p>Kreative und pflegeleichte Gartenplanung – individuell abgestimmt auf Ihre Wünsche. Inkl. Farbskizze, 3D-Ansicht und detaillierter Planung im Maßstab 1:100.</p>
+            </div>
+            <div class="service-card reveal reveal-scale reveal-delay-2">
+                <img src="https://www.gartenbau-stolzlederer.at/wp-content/uploads/2023/11/IMG_3474-scaled-e1701271892801-1600x800.jpg" alt="Gartengestaltung" class="card-img">
+                <div class="icon-wrap"><i data-lucide="trees"></i></div>
+                <h3>Gartengestaltung</h3>
+                <p>Natursteinmauern, Pflasterungen, Schwimmteiche, Bachläufe und Holzterrassen – wir verwandeln Ihren Garten in eine persönliche Ruheoase.</p>
+            </div>
+            <div class="service-card reveal reveal-right reveal-delay-3">
+                <img src="https://www.gartenbau-stolzlederer.at/wp-content/uploads/2021/10/IMG_7039-1600x800.jpg" alt="Gärtnerei" class="card-img">
+                <div class="icon-wrap"><i data-lucide="flower-2"></i></div>
+                <h3>Gärtnerei</h3>
+                <p>Gesunde Pflanzen aus unserer eigenen Gärtnerei – von Bäumen und Rosen über Stauden und Kräuter bis hin zu Hochbeeten und professioneller Bodenberatung.</p>
+            </div>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div style="text-align: center; margin-top: 80px; margin-bottom: 40px;">
+            <span class="section-label reveal">Einblicke</span>
+            <h2 class="section-title reveal reveal-delay-1">Unsere Gartenmomente</h2>
+            <div class="section-divider reveal reveal-delay-2"></div>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-tile reveal reveal-delay-1"><img src="https://www.gartenbau-stolzlederer.at/wp-content/uploads/2023/11/IMG_E4890-1600x800.jpg" alt="Natursteinmauer" loading="lazy"><div class="tile-caption">Natursteinmauer</div></div>
+            <div class="gallery-tile reveal reveal-delay-2"><img src="https://www.gartenbau-stolzlederer.at/wp-content/uploads/2021/09/IMG_0092-1600x800.jpg" alt="Gartenanlage" loading="lazy"><div class="tile-caption">Gartenanlage</div></div>
+            <div class="gallery-tile reveal reveal-delay-3"><img src="https://www.gartenbau-stolzlederer.at/wp-content/uploads/2021/06/stolzlederer-garten-biene-1600x800.jpg" alt="Naturnah Gärtnern" loading="lazy"><div class="tile-caption">Naturnah Gärtnern</div></div>
+            <div class="gallery-tile reveal reveal-delay-1"><img src="https://www.gartenbau-stolzlederer.at/wp-content/uploads/2023/11/IMG_3474-scaled-e1701271892801-1600x800.jpg" alt="Wasser im Garten" loading="lazy"><div class="tile-caption">Wasser im Garten</div></div>
+            <div class="gallery-tile reveal reveal-delay-2"><img src="https://www.gartenbau-stolzlederer.at/wp-content/uploads/2023/11/IMG_E4937-scaled-e1701271699691-1600x800.jpg" alt="Pflanzvielfalt" loading="lazy"><div class="tile-caption">Pflanzvielfalt</div></div>
+            <div class="gallery-tile reveal reveal-delay-3"><img src="https://www.gartenbau-stolzlederer.at/wp-content/uploads/2021/10/IMG_7039-1600x800.jpg" alt="Gärtnerei Stolzlederer" loading="lazy"><div class="tile-caption">Gärtnerei Stolzlederer</div></div>
+        </div>
+    </section>
+
+    <!-- GALERIE -->
+    <section id="galerie" class="section">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span class="section-label reveal">Portfolio</span>
+            <h2 class="section-title reveal reveal-delay-1">Unsere Projekte</h2>
+            <div class="section-divider reveal reveal-delay-2"></div>
+        </div>
+        <div class="masonry">
+            <div class="masonry-item reveal reveal-left">
+                <img src="https://www.gartenbau-stolzlederer.at/wp-content/uploads/2023/11/IMG_E4937-scaled-e1701271699691-1600x800.jpg" alt="Gartenplanung Projekt">
+                <div class="overlay"><span>Gartenplanung</span></div>
+            </div>
+            <div class="masonry-item reveal reveal-right reveal-delay-1">
+                <img src="https://www.gartenbau-stolzlederer.at/wp-content/uploads/2023/11/IMG_E4890-1600x800.jpg" alt="Natursteinmauer Projekt">
+                <div class="overlay"><span>Natursteinmauer</span></div>
+            </div>
+            <div class="masonry-item reveal reveal-left reveal-delay-2">
+                <img src="https://www.gartenbau-stolzlederer.at/wp-content/uploads/2021/09/IMG_0092-1600x800.jpg" alt="Gartengestaltung Projekt">
+                <div class="overlay"><span>Gartengestaltung</span></div>
+            </div>
+            <div class="masonry-item reveal reveal-right reveal-delay-3">
+                <img src="https://www.gartenbau-stolzlederer.at/wp-content/uploads/2021/06/stolzlederer-garten-biene-1600x800.jpg" alt="Naturgarten">
+                <div class="overlay"><span>Naturgarten</span></div>
+            </div>
+            <div class="masonry-item reveal reveal-left reveal-delay-1">
+                <img src="https://www.gartenbau-stolzlederer.at/wp-content/uploads/2021/10/IMG_7039-1600x800.jpg" alt="Pflanzenwelt">
+                <div class="overlay"><span>Pflanzenwelt</span></div>
+            </div>
+            <div class="masonry-item reveal reveal-right reveal-delay-2">
+                <img src="https://www.gartenbau-stolzlederer.at/wp-content/uploads/2023/11/IMG_3474-scaled-e1701271892801-1600x800.jpg" alt="Wasser & Feuer">
+                <div class="overlay"><span>Wasser & Feuer</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section section-cream">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span class="section-label reveal">So funktioniert's</span>
+            <h2 class="section-title reveal reveal-delay-1">Ihr Weg zum Traumgarten</h2>
+            <div class="section-divider reveal reveal-delay-2"></div>
+        </div>
+        <div class="process-grid">
+            <div class="process-step reveal reveal-delay-1"><div class="step-circle">01</div><h4>Besichtigung</h4><p>Unsere Gartenplaner kommen zu Ihnen vor Ort, um Ihre Gartenfläche zu besichtigen und Ihre Wünsche zu besprechen.</p></div>
+            <div class="process-step reveal reveal-delay-2"><div class="step-circle">02</div><h4>Planung</h4><p>Sie erhalten eine Farbskizze oder detaillierte 3D-Planung im Maßstab 1:100 mit Preisangebot in einer Präsentationsmappe.</p></div>
+            <div class="process-step reveal reveal-delay-3"><div class="step-circle">03</div><h4>Umsetzung</h4><p>Nach Auftragserteilung startet die Umsetzungsphase – Ihr Traumgarten nimmt Gestalt an.</p></div>
+            <div class="process-step reveal reveal-delay-4"><div class="step-circle">04</div><h4>Genießen</h4><p>Mit Ihrer persönlichen „Stolzlederer Gärtnermappe" haben Sie alle Infos zur optimalen Pflege Ihres Gartens.</p></div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span class="section-label reveal">Über uns</span>
+            <h2 class="section-title reveal reveal-delay-1">Qualität, tief verwurzelt</h2>
+            <div class="section-divider reveal reveal-delay-2"></div>
+        </div>
+        <div class="about-cta reveal reveal-delay-1">
+            <div class="text">
+                <h3>Ihr Ansprechpartner-Team</h3>
+                <p>Seit über 25 Jahren steht die Familie Stolzlederer für individuelle Gartengestaltung in Oberösterreich. Unter der Geschäftsführung von Katharina und Thomas Kranz setzen wir Ihre Gartenwünsche mit höchster Qualität um. Ihre Ansprechpartnerin Doris berät Sie gerne!</p>
+                <div class="schedule-row">
+                    <div class="schedule-box"><strong>Gärtnerei</strong><span>Mo–Fr 8–12 & 13–17 Uhr</span></div>
+                    <div class="schedule-box"><strong>Büro</strong><span>Mo–Fr 8–13 Uhr</span></div>
+                </div>
+                <a href="https://www.google.com/maps/search/?api=1&query=Gartenbau+Stolzlederer+Kronast+43+4212+Neumarkt+im+Mühlkreis" target="_blank" class="btn-green">Standort anzeigen</a>
+            </div>
+            <div style="flex-shrink: 0;">
+                <img src="https://www.gartenbau-stolzlederer.at/wp-content/uploads/2022/04/st-logo-jubilaeum.png" alt="Gartenbau Stolzlederer" style="width: 300px; border-radius: var(--radius); box-shadow: var(--shadow);">
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section section-cream">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span class="section-label reveal">Kundenstimmen</span>
+            <h2 class="section-title reveal reveal-delay-1">Was unsere Kunden sagen</h2>
+            <div class="section-divider reveal reveal-delay-2"></div>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card reveal reveal-left reveal-delay-1">
+                <div class="quote-mark">"</div>
+                <div class="stars">★★★★★</div>
+                <blockquote>Von der Planung bis zur Umsetzung einfach top! Die Stolzlederer-Mannschaft hat unseren Garten in eine wunderschöne Oase verwandelt. Absolut empfehlenswert!</blockquote>
+                <div class="author">Zufriedener Kunde</div>
+            </div>
+            <div class="testimonial-card reveal reveal-scale reveal-delay-2">
+                <div class="quote-mark">"</div>
+                <div class="stars">★★★★★</div>
+                <blockquote>Wir verarbeiten qualitative Pflanzen und bieten alle Arten von Materialien für Pflasterungen und Mauerbau. – Herbert Stolzlederer, Gründer</blockquote>
+                <div class="author">Herbert Stolzlederer</div>
+            </div>
+            <div class="testimonial-card reveal reveal-right reveal-delay-3">
+                <div class="quote-mark">"</div>
+                <div class="stars">★★★★★</div>
+                <blockquote>Wichtig für uns ist dabei immer, zukunftsorientiert zu gestalten, damit sich der Garten im Laufe der Jahre voll entfalten kann.</blockquote>
+                <div class="author">Thomas Kranz, Geschäftsführer</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="kontakt" class="section contact-cta">
+        <h2 class="reveal">Bereit für Ihren Traumgarten?</h2>
+        <p class="reveal reveal-delay-1">Nehmen Sie mit uns Kontakt auf und vereinbaren Sie einen Termin für ein unverbindliches Erstgespräch. Wir freuen uns auf Ihre Anfrage!</p>
+        <a href="tel:+4379418913" class="btn-green reveal reveal-delay-2">+43 7941 89 13 anrufen</a>
+        <div class="contact-info-row reveal reveal-delay-3">
+            <div class="contact-info-item"><i data-lucide="map-pin"></i><span>Kronast 43, 4212 Neumarkt im Mühlkreis</span></div>
+            <div class="contact-info-item"><i data-lucide="phone"></i><span>+43 7941 89 13</span></div>
+            <div class="contact-info-item"><i data-lucide="mail"></i><span>office@gartenbau-stolzlederer.at</span></div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="#" class="logo"><img src="https://www.gartenbau-stolzlederer.at/wp-content/uploads/2022/04/st-logo-jubilaeum.png" alt="Stolzlederer" style="height:35px;width:auto;"></a>
+                <p>Individuelle Gartengestaltung, Gartenplanung und Gärtnerei in Neumarkt im Mühlkreis. Qualität, tief verwurzelt – seit über 25 Jahren.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Navigation</h4>
+                <a href="#">Home</a><a href="#leistungen">Leistungen</a><a href="#galerie">Galerie</a><a href="#about">Über uns</a><a href="#kontakt">Kontakt</a>
+            </div>
+            <div class="footer-links">
+                <h4>Bereiche</h4>
+                <a href="#leistungen">Gartenplanung</a><a href="#leistungen">Gartengestaltung</a><a href="#leistungen">Gärtnerei</a>
+            </div>
+            <div class="footer-links">
+                <h4>Rechtliches</h4>
+                <a href="#impressum">Impressum</a>
+                <a href="#datenschutz">Datenschutz</a>
+            </div>
+        </div>
+        <div class="footer-bottom"><p>&copy; <span id="year"></span> Gartenbau Stolzlederer — Alle Rechte vorbehalten</p></div>
+    </footer>
+
+    <!-- IMPRESSUM -->
+    <section id="impressum" class="section legal-section">
+        <h2 class="section-title">Impressum</h2>
+        <div class="legal-content">
+            <h3>Angaben gemäß § 5 ECG / § 25 MedienG</h3>
+            <p><strong>Stolzlederer GmbH & Co KG</strong></p>
+            <p>Geschäftsführung: Katharina und Thomas Kranz</p>
+            <p>Kronast 43, 4212 Neumarkt im Mühlkreis, Österreich</p>
+            <p>Tel: +43 7941 89 13</p>
+            <p>E-Mail: office@gartenbau-stolzlederer.at</p>
+            <p>Website: www.gartenbau-stolzlederer.at</p>
+
+            <h3>Firmenbuchdaten</h3>
+            <p>Firmenbuch-Nummer: FN 566089 i</p>
+            <p>UID-Nummer: ATU77463638</p>
+            <p>Bezirkshauptmannschaft BH Bezirk Freistadt</p>
+
+            <h3>Unternehmensgegenstand</h3>
+            <p>Gartengestaltung, Gartenplanung und Gärtnerei</p>
+
+            <h3>Haftungsausschluss</h3>
+            <p>Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehmen wir jedoch keine Gewähr.</p>
+
+            <h3>Urheberrecht</h3>
+            <p>Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem österreichischen Urheberrecht.</p>
+        </div>
+    </section>
+
+    <!-- DATENSCHUTZ -->
+    <section id="datenschutz" class="section legal-section">
+        <h2 class="section-title">Datenschutzerklärung</h2>
+        <div class="legal-content">
+            <h3>Verantwortlicher</h3>
+            <p>Stolzlederer GmbH & Co KG<br>Kronast 43, 4212 Neumarkt im Mühlkreis<br>office@gartenbau-stolzlederer.at</p>
+
+            <h3>Erhebung und Verarbeitung von Daten</h3>
+            <p>Beim Besuch unserer Website werden automatisch Informationen allgemeiner Natur erfasst (Serverlogfiles). Diese beinhalten den Browsertyp, das Betriebssystem, die Referrer-URL, die IP-Adresse und den Zeitpunkt der Serveranfrage.</p>
+
+            <h3>Kontaktaufnahme</h3>
+            <p>Wenn Sie uns per Telefon, E-Mail oder über das Kontaktformular kontaktieren, werden Ihre Angaben zur Bearbeitung der Kontaktanfrage und deren Abwicklung verarbeitet.</p>
+
+            <h3>Cookies</h3>
+            <p>Diese Website verwendet keine Tracking-Cookies. Es werden nur technisch notwendige Cookies verwendet.</p>
+
+            <h3>Ihre Rechte</h3>
+            <p>Sie haben das Recht auf Auskunft, Berichtigung, Löschung und Einschränkung der Verarbeitung Ihrer personenbezogenen Daten gemäß DSGVO.</p>
+
+            <h3>Kontakt für Datenschutzanfragen</h3>
+            <p>Stolzlederer GmbH & Co KG<br>office@gartenbau-stolzlederer.at<br>+43 7941 89 13</p>
+        </div>
+    </section>
+
+    <script>
+        lucide.createIcons();
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Typewriter
+        const subtitleEl = document.getElementById('hero-subtitle');
+        const subtitleText = 'Individuelle Gartengestaltung aus Oberösterreich';
+        let charIdx = 0;
+        function typeWriter() {
+            if (charIdx < subtitleText.length) {
+                subtitleEl.textContent = subtitleText.slice(0, charIdx + 1);
+                const cursor = document.createElement('span');
+                cursor.className = 'typewriter-cursor';
+                subtitleEl.appendChild(cursor);
+                charIdx++;
+                setTimeout(typeWriter, 45);
+            } else {
+                setTimeout(() => { const c = subtitleEl.querySelector('.typewriter-cursor'); if (c) c.style.animation = 'blink-cursor 0.8s step-end 4'; setTimeout(() => { if (c) c.remove(); }, 3200); }, 1000);
+            }
+        }
+        setTimeout(typeWriter, 600);
+
+        // Nature particles (lime-green-toned for Stolzlederer brand)
+        const particlesContainer = document.getElementById('particles');
+        function createParticle() {
+            const p = document.createElement('div');
+            p.className = 'particle';
+            const size = Math.random() * 5 + 2;
+            const left = Math.random() * 100;
+            const duration = Math.random() * 8 + 6;
+            const delay = Math.random() * 5;
+            const hue = 70 + Math.random() * 40; // lime-green range matching brand
+            p.style.cssText = `width:${size}px;height:${size}px;left:${left}%;bottom:-10px;animation-duration:${duration}s;animation-delay:${delay}s;background:radial-gradient(circle, hsla(${hue},55%,40%,0.4), transparent 70%);`;
+            particlesContainer.appendChild(p);
+            setTimeout(() => p.remove(), (duration + delay) * 1000);
+        }
+        for (let i = 0; i < 15; i++) createParticle();
+        setInterval(() => { for (let i = 0; i < 2; i++) createParticle(); }, 2500);
+
+        // Hamburger
+        const hamburger = document.getElementById('hamburger-btn');
+        const nav = document.getElementById('main-nav');
+        hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); nav.classList.toggle('open'); });
+        nav.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('open'); nav.classList.remove('open'); }); });
+
+        // Active nav on scroll
+        const sections = document.querySelectorAll('section[id]');
+        const navLinks = nav.querySelectorAll('a');
+        window.addEventListener('scroll', () => { let current = ''; sections.forEach(s => { if (scrollY >= s.offsetTop - 150) current = s.getAttribute('id'); }); navLinks.forEach(l => { l.classList.remove('active'); if (l.getAttribute('href') === '#' + current) l.classList.add('active'); }); });
+
+        // Header scroll effect
+        const header = document.getElementById('site-header');
+        window.addEventListener('scroll', () => { header.classList.toggle('scrolled', window.scrollY > 80); });
+
+        // Card mouse glow
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                card.style.setProperty('--mouse-x', ((e.clientX - rect.left) / rect.width * 100).toFixed(1) + '%');
+                card.style.setProperty('--mouse-y', ((e.clientY - rect.top) / rect.height * 100).toFixed(1) + '%');
+            });
+        });
+
+        // Scroll reveal
+        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('active'); }); }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal, .section-divider').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
