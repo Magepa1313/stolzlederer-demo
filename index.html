@@ -155,6 +155,50 @@
         .schedule-box strong { display: block; font-family: var(--serif); font-size: 1.1rem; color: var(--primary); margin-bottom: 4px; }
         .schedule-box span { font-size: 0.85rem; color: var(--text-muted); }
 
+        /* TEAM CARDS */
+        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; max-width: 1000px; margin: 0 auto; }
+        .team-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 35px 25px; text-align: center; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: var(--shadow); }
+        .team-card:hover { transform: translateY(-6px); border-color: var(--border-hover); box-shadow: var(--shadow-hover); }
+        .team-card .team-icon { width: 70px; height: 70px; border-radius: 50%; background: var(--bg-green-soft); border: 2px solid var(--border); display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; transition: all 0.5s; }
+        .team-card:hover .team-icon { background: var(--primary-glow); border-color: var(--primary); transform: scale(1.1); }
+        .team-card .team-icon i { color: var(--primary); width: 28px; height: 28px; }
+        .team-card h4 { font-family: var(--serif); font-size: 1.2rem; font-weight: 600; margin-bottom: 4px; color: var(--heading); }
+        .team-card .team-role { font-size: 0.8rem; color: var(--primary); text-transform: uppercase; letter-spacing: 1.5px; font-weight: 700; }
+        .team-extra { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 35px; text-align: center; max-width: 600px; margin: 30px auto 0; box-shadow: var(--shadow); }
+        .team-extra p { color: var(--text-muted); line-height: 1.7; }
+        .team-extra strong { color: var(--primary); font-family: var(--serif); font-size: 1.3rem; }
+        /* BERATUNG */
+        .beratung-box { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 50px; display: flex; align-items: center; gap: 45px; max-width: 900px; margin: 0 auto; box-shadow: var(--shadow); transition: all 0.5s; }
+        .beratung-box:hover { box-shadow: var(--shadow-hover); }
+        .beratung-avatar { flex-shrink: 0; width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--accent)); display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px var(--primary-glow); }
+        .beratung-avatar i { color: #fff; width: 48px; height: 48px; }
+        .beratung-text { flex: 1; }
+        .beratung-text h3 { font-family: var(--serif); font-size: 1.8rem; font-weight: 700; margin-bottom: 10px; color: var(--heading); }
+        .beratung-text p { color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; }
+        .beratung-text .beratung-name { font-size: 0.85rem; font-weight: 700; color: var(--primary); text-transform: uppercase; letter-spacing: 1.5px; }
+        /* GUTSCHEINE */
+        .gutschein-wrapper { display: flex; align-items: center; gap: 50px; max-width: 1000px; margin: 0 auto; }
+        .gutschein-visual { flex-shrink: 0; width: 320px; height: 220px; background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%); border-radius: var(--radius); display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; box-shadow: 0 12px 40px var(--primary-glow); position: relative; overflow: hidden; }
+        .gutschein-visual::before { content: ''; position: absolute; top: -30px; right: -30px; width: 100px; height: 100px; border-radius: 50%; background: rgba(255,255,255,0.1); }
+        .gutschein-visual::after { content: ''; position: absolute; bottom: -20px; left: -20px; width: 80px; height: 80px; border-radius: 50%; background: rgba(255,255,255,0.08); }
+        .gutschein-visual i { width: 48px; height: 48px; margin-bottom: 12px; position: relative; z-index: 1; }
+        .gutschein-visual span { font-family: var(--serif); font-size: 1.5rem; font-weight: 700; position: relative; z-index: 1; }
+        .gutschein-visual small { font-size: 0.8rem; opacity: 0.8; margin-top: 4px; position: relative; z-index: 1; }
+        .gutschein-info { flex: 1; }
+        .gutschein-info h3 { font-family: var(--serif); font-size: 2rem; font-weight: 700; margin-bottom: 15px; color: var(--heading); }
+        .gutschein-info p { color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; }
+        .gutschein-features { list-style: none; margin-bottom: 25px; }
+        .gutschein-features li { display: flex; align-items: center; gap: 10px; color: var(--text); font-size: 0.95rem; padding: 6px 0; }
+        .gutschein-features li i { color: var(--primary); width: 18px; height: 18px; flex-shrink: 0; }
+        /* NEWS */
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; max-width: 1000px; margin: 0 auto; }
+        .news-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: var(--shadow); }
+        .news-card:hover { transform: translateY(-5px); border-color: var(--border-hover); box-shadow: var(--shadow-hover); }
+        .news-card .news-body { padding: 25px; }
+        .news-card .news-date { font-size: 0.75rem; color: var(--primary); text-transform: uppercase; letter-spacing: 2px; font-weight: 700; margin-bottom: 8px; }
+        .news-card h4 { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; margin-bottom: 8px; color: var(--heading); line-height: 1.4; }
+        .news-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+
         /* TESTIMONIALS */
         .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         .testimonial-card { background: var(--card-bg); border: 1px solid var(--border); padding: 38px 32px; border-radius: var(--radius); position: relative; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: var(--shadow); }
@@ -220,8 +264,11 @@
             .footer-content { flex-direction: column; align-items: center; text-align: center; }
             .stats-bar { gap: 30px; }
             .about-cta { flex-direction: column; padding: 35px 22px; gap: 25px; text-align: center; }
+            .beratung-box { flex-direction: column; text-align: center; padding: 35px 22px; gap: 25px; }
+            .gutschein-wrapper { flex-direction: column; text-align: center; }
+            .gutschein-visual { width: 100%; max-width: 320px; }
         }
-        @media (max-width: 480px) { .grid { grid-template-columns: 1fr; } .testimonials-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 480px) { .grid { grid-template-columns: 1fr; } .testimonials-grid { grid-template-columns: 1fr; } .team-grid { grid-template-columns: 1fr; } .news-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -233,6 +280,8 @@
             <a href="#leistungen">Leistungen</a>
             <a href="#galerie">Galerie</a>
             <a href="#about">Über uns</a>
+            <a href="#team">Team</a>
+            <a href="#news">News</a>
             <a href="#kontakt">Kontakt</a>
         </nav>
         <button class="hamburger" id="hamburger-btn" aria-label="Menü öffnen"><span></span><span></span><span></span></button>
@@ -380,6 +429,66 @@
         </div>
     </section>
 
+    <!-- TEAM -->
+    <section id="team" class="section section-cream">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span class="section-label reveal">Unser Team</span>
+            <h2 class="section-title reveal reveal-delay-1">Die Menschen hinter Stolzlederer</h2>
+            <div class="section-divider reveal reveal-delay-2"></div>
+        </div>
+        <div class="team-grid">
+            <div class="team-card reveal reveal-left reveal-delay-1">
+                <div class="team-icon"><i data-lucide="crown"></i></div>
+                <h4>Herbert Stolzlederer</h4>
+                <span class="team-role">Gründer &amp; Seniorchef</span>
+            </div>
+            <div class="team-card reveal reveal-scale reveal-delay-2">
+                <div class="team-icon"><i data-lucide="briefcase"></i></div>
+                <h4>Thomas Kranz</h4>
+                <span class="team-role">Geschäftsführung</span>
+            </div>
+            <div class="team-card reveal reveal-scale reveal-delay-3">
+                <div class="team-icon"><i data-lucide="briefcase"></i></div>
+                <h4>Katharina Kranz</h4>
+                <span class="team-role">Geschäftsführung</span>
+            </div>
+            <div class="team-card reveal reveal-right reveal-delay-1">
+                <div class="team-icon"><i data-lucide="calculator"></i></div>
+                <h4>Susanne Stolzlederer</h4>
+                <span class="team-role">Buchhaltung</span>
+            </div>
+            <div class="team-card reveal reveal-left reveal-delay-2">
+                <div class="team-icon"><i data-lucide="headset"></i></div>
+                <h4>Doris Gusner</h4>
+                <span class="team-role">Assistenz der GF</span>
+            </div>
+        </div>
+        <div class="team-extra reveal reveal-delay-3">
+            <p><strong>15+</strong> fleißige Mitarbeiter</p>
+            <p>… schwirren wie Bienen in unserer Gärtnerei als auch in Ihren Gärten und kümmern sich bei Ihnen vor Ort um die Umsetzung Ihres Traum-Gartens.</p>
+        </div>
+    </section>
+
+    <!-- BERATUNG -->
+    <section class="section">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span class="section-label reveal">Persönliche Beratung</span>
+            <h2 class="section-title reveal reveal-delay-1">Zeit für Beratung</h2>
+            <div class="section-divider reveal reveal-delay-2"></div>
+        </div>
+        <div class="beratung-box reveal reveal-delay-1">
+            <div class="beratung-avatar">
+                <i data-lucide="user-round"></i>
+            </div>
+            <div class="beratung-text">
+                <h3>Ihre Ansprechpartnerin</h3>
+                <p>Wir sind der richtige Partner zur Umsetzung Ihrer Wünsche. Gerne vereinbaren wir mit Ihnen einen Termin zu einem unverbindlichen Erstgespräch – individuell und persönlich.</p>
+                <p class="beratung-name">Doris Gusner – Ihre persönliche Beraterin</p>
+                <a href="tel:004379418913" class="btn-green" style="margin-top: 15px;">+43 7941 89 13 anrufen</a>
+            </div>
+        </div>
+    </section>
+
     <!-- TESTIMONIALS -->
     <section class="section section-cream">
         <div style="text-align: center; margin-bottom: 50px;">
@@ -409,6 +518,86 @@
         </div>
     </section>
 
+    <!-- GUTSCHEINE -->
+    <section id="gutscheine" class="section">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span class="section-label reveal">Freude schenken</span>
+            <h2 class="section-title reveal reveal-delay-1">Gutscheine</h2>
+            <div class="section-divider reveal reveal-delay-2"></div>
+        </div>
+        <div class="gutschein-wrapper reveal reveal-delay-1">
+            <div class="gutschein-visual">
+                <i data-lucide="gift"></i>
+                <span>Gutschein</span>
+                <small>Gartenbau Stolzlederer</small>
+            </div>
+            <div class="gutschein-info">
+                <h3>Blumenfreude schenken</h3>
+                <p>Machen Sie Ihren Freunden oder Ihrer Familie ein sinnvolles Geschenk &ndash; mit einem Gutschein von Stolzlederer! Ob f&uuml;r die Planung des neuen Gartens oder ein kleiner Blumengru&szlig;.</p>
+                <ul class="gutschein-features">
+                    <li><i data-lucide="check-circle"></i> F&uuml;r unsere gro&szlig;e Auswahl an Pflanzen</li>
+                    <li><i data-lucide="check-circle"></i> F&uuml;r die Planung Ihres neuen Gartens</li>
+                    <li><i data-lucide="check-circle"></i> Erh&auml;ltlich in unserer G&auml;rtnerei</li>
+                    <li><i data-lucide="check-circle"></i> Auf Wunsch auch per Post zugestellt</li>
+                </ul>
+                <a href="tel:004379418913" class="btn-green">Jetzt Gutschein bestellen</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWS -->
+    <section id="news" class="section section-cream">
+        <div style="text-align: center; margin-bottom: 50px;">
+            <span class="section-label reveal">Neuigkeiten</span>
+            <h2 class="section-title reveal reveal-delay-1">Was tut sich bei Stolzlederer?</h2>
+            <div class="section-divider reveal reveal-delay-2"></div>
+        </div>
+        <div class="news-grid">
+            <div class="news-card reveal reveal-left reveal-delay-1">
+                <div class="news-body">
+                    <div class="news-date">17. M&auml;rz 2025</div>
+                    <h4>Vortrag &bdquo;Gartenpflege im Fr&uuml;hjahr&ldquo;</h4>
+                    <p>&bdquo;Gartenpflege im Fr&uuml;hjahr&ldquo; mit dem Seniorenbund Neumarkt bei der Whiskydestillerie Peter Affenzeller.</p>
+                </div>
+            </div>
+            <div class="news-card reveal reveal-scale reveal-delay-2">
+                <div class="news-body">
+                    <div class="news-date">17. M&auml;rz 2025</div>
+                    <h4>Vortrag &bdquo;Der bienenfreundliche Garten&ldquo;</h4>
+                    <p>Bienenfreundlicher Garten &ndash; Alltagstaugliche Tipps f&uuml;r Jedermann!</p>
+                </div>
+            </div>
+            <div class="news-card reveal reveal-right reveal-delay-3">
+                <div class="news-body">
+                    <div class="news-date">16. Dezember 2024</div>
+                    <h4>Bildungs- und Lehrlingsmesse PTS Pregarten</h4>
+                    <p>Unser Stand auf der Bildungs- und Lehrlingsmesse Polytechnische Schule Pregarten.</p>
+                </div>
+            </div>
+            <div class="news-card reveal reveal-left reveal-delay-1">
+                <div class="news-body">
+                    <div class="news-date">17. Oktober 2024</div>
+                    <h4>Genussgarten Whiskydestillerie Affenzeller</h4>
+                    <p>Der Genussgarten l&auml;dt zum Besuch ein! Ein spannendes Gartenbauprojekt von Stolzlederer.</p>
+                </div>
+            </div>
+            <div class="news-card reveal reveal-scale reveal-delay-2">
+                <div class="news-body">
+                    <div class="news-date">26. September 2023</div>
+                    <h4>Reise nach Verona zur &bdquo;Marmomac&ldquo;</h4>
+                    <p>Es war auch heuer wieder eine tolle und lustige Reise zur Steinmesse!</p>
+                </div>
+            </div>
+            <div class="news-card reveal reveal-right reveal-delay-3">
+                <div class="news-body">
+                    <div class="news-date">14. August 2023</div>
+                    <h4>Teambuilding in der B&ouml;hmerwaldschule</h4>
+                    <p>Weil wir nur gemeinsam stark sind! Teambuilding in Ulrichsberg.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CONTACT -->
     <section id="kontakt" class="section contact-cta">
         <h2 class="reveal">Bereit für Ihren Traumgarten?</h2>
@@ -430,11 +619,11 @@
             </div>
             <div class="footer-links">
                 <h4>Navigation</h4>
-                <a href="#">Home</a><a href="#leistungen">Leistungen</a><a href="#galerie">Galerie</a><a href="#about">Über uns</a><a href="#kontakt">Kontakt</a>
+                <a href="#">Home</a><a href="#leistungen">Leistungen</a><a href="#galerie">Galerie</a><a href="#about">Über uns</a><a href="#team">Team</a><a href="#news">News</a><a href="#kontakt">Kontakt</a>
             </div>
             <div class="footer-links">
                 <h4>Bereiche</h4>
-                <a href="#leistungen">Gartenplanung</a><a href="#leistungen">Gartengestaltung</a><a href="#leistungen">Gärtnerei</a>
+                <a href="#leistungen">Gartenplanung</a><a href="#leistungen">Gartengestaltung</a><a href="#leistungen">Gärtnerei</a><a href="#gutscheine">Gutscheine</a>
             </div>
             <div class="footer-links">
                 <h4>Rechtliches</h4>
